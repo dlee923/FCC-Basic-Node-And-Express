@@ -4,16 +4,18 @@ require('dotenv').config();
 
 console.log("Hello World");
 
+// to be able to install the html file
 app.get('/', function(req, res) {
     // res.send("Hello Express");
     let absolutePath = __dirname + "/views/index.html";
     res.sendFile(absolutePath);
 });
 
+// to MOUNT the CSS file in the public folder
 app.use('/public', express.static(__dirname + '/public'));
 
+// to apply .env variables
 app.get('/json', function(req, res) {
-    const mySecret = process.env['MESSAGE_STYLE'];
     let response = "Hello Json"
     if (process.env.MESSAGE_STYLE === "uppercase") {
         response = response.toUpperCase();
@@ -21,10 +23,12 @@ app.get('/json', function(req, res) {
     } else {
         res.json({"message": response});
     }
-    
 });
 
-
+app.use('/', function(req, res, next) {
+    console.log(req.method + " " + req.path + " - " + req.ip);
+    next();
+});
 
 
 
