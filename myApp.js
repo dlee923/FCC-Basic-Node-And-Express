@@ -14,21 +14,21 @@ require('dotenv').config();
 // // to MOUNT the CSS file in the public folder
 // app.use('/public', express.static(__dirname + '/public'));
 
-// // to apply .env variables
-// app.get('/json', function(req, res) {
-//     let response = "Hello Json"
-//     if (process.env.MESSAGE_STYLE === "uppercase") {
-//         response = response.toUpperCase();
-//         res.json({"message": response});
-//     } else {
-//         res.json({"message": response});
-//     }
-// });
-
-app.use(function(req, res, next) {
-    console.log(req.method + " " + req.path + " - " + req.ip);
-    next();
+// to apply .env variables
+app.get('/json', function(req, res) {
+    let response = "Hello Json"
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+        response = response.toUpperCase();
+        res.json({"message": response});
+    } else {
+        res.json({"message": response});
+    }
 });
+
+// app.use(function(req, res, next) {
+//     console.log(req.method + " " + req.path + " - " + req.ip);
+//     next();
+// });
 
 
 
