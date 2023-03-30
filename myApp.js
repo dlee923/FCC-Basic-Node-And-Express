@@ -30,7 +30,11 @@ app.use(function(req, res, next) {
     next();
 });
 
-
+app.get('/now', function(req, res) {
+    req.time = new Date().toString();
+}, function(req, res) {
+    res.json({time: req.time});
+})
 
 
 
