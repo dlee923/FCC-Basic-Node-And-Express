@@ -13,12 +13,12 @@ app.get('/', function(req, res) {
 app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/json', function(req, res) {
+    const mySecret = process.env['MESSAGE_STYLE'];
     let response = "Hello Json"
-    res.json({"message": response});
-
-    if (process.env['MESSAGE_STYLE'] === "uppercase") {
+    if (process.env.MESSAGE_STYLE === "uppercase") {
         response.toUpperCase();
     }
+    res.json({"message": response});
 });
 
 
