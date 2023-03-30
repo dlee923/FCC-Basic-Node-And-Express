@@ -2,17 +2,17 @@ let express = require('express');
 let app = express();
 require('dotenv').config();
 
-// console.log("Hello World");
+console.log("Hello World");
 
-// // to be able to install the html file
-// app.get('/', function(req, res) {
-//     // res.send("Hello Express");
-//     let absolutePath = __dirname + "/views/index.html";
-//     res.sendFile(absolutePath);
-// });
+// to be able to install the html file
+app.get('/', function(req, res) {
+    // res.send("Hello Express");
+    let absolutePath = __dirname + "/views/index.html";
+    res.sendFile(absolutePath);
+});
 
-// // to MOUNT the CSS file in the public folder
-// app.use('/public', express.static(__dirname + '/public'));
+// to MOUNT the CSS file in the public folder
+app.use('/public', express.static(__dirname + '/public'));
 
 // to apply .env variables
 app.get('/json', function(req, res) {
@@ -25,10 +25,10 @@ app.get('/json', function(req, res) {
     }
 });
 
-// app.use(function(req, res, next) {
-//     console.log(req.method + " " + req.path + " - " + req.ip);
-//     next();
-// });
+app.use(function(req, res, next) {
+    console.log(req.method + " " + req.path + " - " + req.ip);
+    next();
+});
 
 
 
