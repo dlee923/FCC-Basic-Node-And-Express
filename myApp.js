@@ -48,9 +48,7 @@ app.get('/name', function(req, res, next) {
     res.json(object);
 });
 
-app.use('/', function(req, res, next) {
-    bodyParser.urlencoded({extended: false});
-});
+app.use('/', bodyParser.urlencoded({extended: false}));
 
 
 
