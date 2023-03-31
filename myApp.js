@@ -43,7 +43,7 @@ app.get('/:word/echo', function(req, res, next) {
 });
 
 app.get('/name', function(req, res, next) {
-    let object = {"name": req.query.lastname + " " + req.query.firstname};
+    let object = {"name": req.query.first + " " + req.query.last};
     res.json(object);
 });
 
