@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 require('dotenv').config();
+let bodyParser = require('body-parser');
 
 console.log("Hello World");
 
@@ -35,7 +36,7 @@ app.get('/now', function(req, res, next) {
     next();
 }, function(req, res) {
     res.json({time: req.time});
-})
+});
 
 app.get('/:word/echo', function(req, res, next) {
     let echoServer = {"echo": req.params.word};
@@ -47,19 +48,9 @@ app.get('/name', function(req, res, next) {
     res.json(object);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.use('/', function(req, res, next) {
+    bodyParser.urlencoded({extended: false});
+});
 
 
 
